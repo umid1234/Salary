@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { runQuery, getOne } = require('../config/database');
-const { JWT_SECRET } = require('../middleware/auth');
+const { getJwtSecret } = require('../middleware/auth');
 
 const register = async (req, res) => {
   try {
@@ -34,7 +34,7 @@ const register = async (req, res) => {
     // Generate token
     const token = jwt.sign(
       { id: result.id, username, email, role: 'admin' },
-      JWT_SECRET,
+      getJwtSecret(),
       { expiresIn: '24h' }
     );
 
@@ -74,7 +74,7 @@ const login = async (req, res) => {
     // Generate token
     const token = jwt.sign(
       { id: user.id, username: user.username, email: user.email, role: user.role },
-      JWT_SECRET,
+      getJwtSecret(),
       { expiresIn: '24h' }
     );
 

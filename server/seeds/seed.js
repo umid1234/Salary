@@ -88,9 +88,13 @@ const seedData = async () => {
     console.log(`${salaryRecords.length} salary records created`);
 
     console.log('\nSeeding completed successfully!');
-    console.log('\nLogin credentials:');
+    console.log('\n============================================');
+    console.log('DEMO CREDENTIALS (for development only):');
     console.log('Email: admin@salarytracker.com');
     console.log('Password: admin123');
+    console.log('');
+    console.log('NOTE: Change this password in production!');
+    console.log('============================================');
     
     process.exit(0);
   } catch (error) {
